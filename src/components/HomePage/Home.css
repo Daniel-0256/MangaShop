@@ -30,7 +30,14 @@ body {
   background-color: #afa6a6;
 }
 
+.container-card {
+  display: flex;
+  justify-content: center;
+}
+
 .card {
+  width: 200px;
+  height: 400px;
   margin: 20px;
   border: none;
   display: flex;
@@ -40,6 +47,7 @@ body {
 }
 
 .card-img {
+  width: 250px;
   height: 300px;
   object-fit: contain;
   object-position: center;
