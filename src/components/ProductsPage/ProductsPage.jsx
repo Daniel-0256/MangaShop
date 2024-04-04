@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./ProductsPage.css";
 
 function ProductsPage() {
@@ -50,16 +51,23 @@ function ProductsPage() {
       </div>
       <div className="products-container">
         {products.map((product) => (
-          <div key={product.ProductId} className="product-card">
-            <img src={product.Image} alt={product.NameProduct} />
-            <h5>{product.NameProduct}</h5>
-            <p>
-              {product.Price.toLocaleString("it-IT", {
-                style: "currency",
-                currency: "EUR",
-              })}
-            </p>
-          </div>
+          <Link
+            to={`/product/details/${product.ProductId}`}
+            key={product.ProductId}
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <div className="product-card">
+              <img src={product.Image} alt={product.NameProduct} />
+              <h5>{product.NameProduct}</h5>
+              <p>
+                {product.Price.toLocaleString("it-IT", {
+                  style: "currency",
+                  currency: "EUR",
+                })}
+              </p>
+              <p>{product.Availability ? 'Disponibile' : 'Non Disponibile'}</p>
+            </div>
+          </Link>
         ))}
       </div>
     </div>
