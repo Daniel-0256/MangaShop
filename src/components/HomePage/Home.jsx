@@ -28,12 +28,13 @@ const Home = () => {
         </Carousel>
       </div>
 
-      <Row>
+      <Row                                                                            >
         {/* Prima Card */}
         <Col className="container-card">
           <Link
-            to={`/products/${encodeURIComponent('One Piece')}`}
+            to={`/products/${encodeURIComponent("One Piece")}`}
             style={{ textDecoration: "none" }}
+            className="a"
           >
             <Card className="card">
               <Card.Img
@@ -51,8 +52,9 @@ const Home = () => {
         {/* Seconda Card */}
         <Col className="container-card">
           <Link
-            to={`/products/${encodeURIComponent('Dragon Ball')}`}
+            to={`/products/${encodeURIComponent("Dragon Ball")}`}
             style={{ textDecoration: "none" }}
+            className="a"
           >
             <Card className="card">
               <Card.Img
@@ -70,8 +72,9 @@ const Home = () => {
         {/* Terza Card */}
         <Col className="container-card">
           <Link
-            to={`/products/${encodeURIComponent('Naruto')}`}
+            to={`/products/${encodeURIComponent("Naruto")}`}
             style={{ textDecoration: "none" }}
+            className="a"
           >
             <Card className="card">
               <Card.Img
