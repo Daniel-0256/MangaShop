@@ -5,11 +5,10 @@ import "./Navbar.css";
 import useAuth from "../Hooks/UseAuth";
 
 const Navbar = () => {
-
   const { isLoggedIn, user } = useAuth();
 
   const handleLogout = () => {
-    localStorage.removeItem('user');
+    localStorage.removeItem("user");
     window.location.reload();
   };
 
@@ -27,26 +26,43 @@ const Navbar = () => {
           </li>
           {isLoggedIn && user?.Role === "Admin" && (
             <li className="nav-item">
-              <Link to="/addproduct" className="nav-links">Aggiungi Prodotto</Link>
+              <Link to="/addproduct" className="nav-links">
+                Aggiungi Prodotto
+              </Link>
             </li>
           )}
           <li className="nav-item">
-          <Dropdown>
+            <Dropdown>
               <Dropdown.Toggle variant="success" id="dropdown-basic">
-                <i className="fas fa-user"></i> {isLoggedIn && user ? `Ciao, ${user.Name + " " + user.Surname}` : ""}
+                <i className="fas fa-user"></i>{" "}
+                {isLoggedIn && user
+                  ? `Ciao, ${user.Name + " " + user.Surname}`
+                  : ""}
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
                 {isLoggedIn ? (
-                  <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                  <>
+                    <Dropdown.Item as={Link} to="/favorites">
+                      Preferiti
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                  </>
                 ) : (
                   <>
-                    <Dropdown.Item as={Link} to="/login">Login</Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/register">Register</Dropdown.Item>
+                    <Dropdown.Item as={Link} to="/login">
+                      Login
+                    </Dropdown.Item>
+                    <Dropdown.Item as={Link} to="/register">
+                      Register
+                    </Dropdown.Item>
                   </>
                 )}
               </Dropdown.Menu>
             </Dropdown>
+          </li>
+          <li>
+            <Link to="/cart">Carrello</Link>
           </li>
         </ul>
       </div>

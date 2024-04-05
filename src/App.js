@@ -10,6 +10,8 @@ import AddProduct from "./components/ProductsPage/AddProduct";
 import ProductDetails from "./components/ProductsPage/ProductDetails";
 import EditProduct from "./components/ProductsPage/EditProduct";
 import DeleteProduct from "./components/ProductsPage/DeleteProduct";
+import Favorites from "./components/FavoritesPage/Favorites";
+import Cart from "./components/CartPage/Cart";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/addproduct" element={<AddProduct />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/cart" element={<Cart />} />
           </Routes>
         </div>
       </Router>
