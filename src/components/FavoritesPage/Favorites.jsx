@@ -8,10 +8,24 @@ const Favorites = () => {
     useEffect(() => {
         if (user) {
             fetch(`https://localhost:44344/api/Favorites/User/${user.UserId}`)
-            .then((response) => response.json())
-            .then((data) => setFavorites(data));
+            .then((response) => {
+                if (!response.ok) {
+                    setFavorites([]);
+                    return;
+                }
+                return response.json();
+            })
+            .then((data) => {
+                if (data) {
+                    setFavorites(data);
+                }
+            })
+            .catch(error => {
+                console.error('Errore nel caricamento dei preferiti:', error);
+            });
         }
     }, [user]);
+    
 
     const removeFromFavorites = (favoriteId) => {
         fetch(`https://localhost:44344/api/Favorites/${favoriteId}`, {

@@ -22,24 +22,33 @@ const Cart = () => {
   };
 
   const calculateTotalPrice = (items) => {
-    const total = items.reduce((acc, item) => acc + item.Products.Price * item.Quantity, 0);
+    const total = items.reduce(
+      (acc, item) => acc + item.Products.Price * item.Quantity,
+      0
+    );
     setTotalPrice(total);
   };
 
-  const updateQuantity = (cartId, quantity) => {
-    fetch(`https://localhost:44344/api/Carts/${cartId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ ...cartItems.find(item => item.CartId === cartId), Quantity: quantity }),
-    })
-    .then(response => {
-      if (response.ok) {
-        fetchCartItems();
-      }
-    })
-    .catch(error => console.error("Failed to update quantity:", error));
+  const updateQuantity = (cartId, newQuantity) => {
+    if (newQuantity < 1) {
+      removeItemFromCart(cartId);
+    } else {
+      fetch(`https://localhost:44344/api/Carts/${cartId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ CartId: cartId, Quantity: newQuantity }),
+      })
+        .then((response) => {
+          if (response.ok) {
+            fetchCartItems();
+          } else {
+            alert("Errore nell'aggiornamento della quantità");
+          }
+        })
+        .catch((error) => console.error("Failed to update quantity:", error));
+    }
   };
 
   const removeItemFromCart = (cartId) => {
@@ -49,16 +58,22 @@ const Cart = () => {
         "Content-Type": "application/json",
       },
     })
-    .then(response => {
-      if (response.ok) {
-
-        const updatedCartItems = cartItems.filter(item => item.CartId !== cartId);
-        setCartItems(updatedCartItems);
-        calculateTotalPrice(updatedCartItems);
-        alert("Prodotto rimosso dal carrello");
-      }
-    })
-    .catch(error => console.error("Errore nella rimozione del prodotto dal carrello:", error));
+      .then((response) => {
+        if (response.ok) {
+          const updatedCartItems = cartItems.filter(
+            (item) => item.CartId !== cartId
+          );
+          setCartItems(updatedCartItems);
+          calculateTotalPrice(updatedCartItems);
+          alert("Prodotto rimosso dal carrello");
+        }
+      })
+      .catch((error) =>
+        console.error(
+          "Errore nella rimozione del prodotto dal carrello:",
+          error
+        )
+      );
   };
 
   return (
@@ -69,14 +84,29 @@ const Cart = () => {
           {cartItems.map((item) => (
             <div key={item.CartId}>
               <h2>{item.Products.NameProduct}</h2>
-              <img src={item.Products.Image} alt={item.Products.NameProduct} style={{ maxWidth: "100px", height: "auto" }} />
+              <img
+                src={item.Products.Image}
+                alt={item.Products.NameProduct}
+                style={{ maxWidth: "100px", height: "auto" }}
+              />
               <p>Prezzo: €{item.Products.Price}</p>
-              <p>Quantità: 
-                <button onClick={() => updateQuantity(item.CartId, item.Quantity - 1)}>-</button>
+              <p>
+                Quantità:
+                <button
+                  onClick={() => updateQuantity(item.CartId, item.Quantity - 1)}
+                >
+                  -
+                </button>
                 {item.Quantity}
-                <button onClick={() => updateQuantity(item.CartId, item.Quantity + 1)}>+</button>
+                <button
+                  onClick={() => updateQuantity(item.CartId, item.Quantity + 1)}
+                >
+                  +
+                </button>
               </p>
-              <button onClick={() => removeItemFromCart(item.CartId)}>Rimuovi</button>
+              <button onClick={() => removeItemFromCart(item.CartId)}>
+                Rimuovi
+              </button>
             </div>
           ))}
           <h3>Prezzo Totale: €{totalPrice.toFixed(2)}</h3>

@@ -14,7 +14,6 @@ const EditProduct = () => {
     Description: "",
     Price: 0,
     Availability: 1,
-    Quantity: 0,
     Category: "",
   });
 
@@ -99,15 +98,6 @@ const EditProduct = () => {
             type="checkbox"
             name="Availability"
             checked={product.Availability}
-            onChange={handleInputChange}
-          />
-        </label>
-        <label>
-          Quantità:
-          <input
-            type="number"
-            name="Quantity"
-            value={product.Quantity}
             onChange={handleInputChange}
           />
         </label>

@@ -14,28 +14,60 @@ const ProductDetails = () => {
       .then((data) => setProduct(data));
   }, [productId]);
 
-  const addToCart = (productId) => {
-    const cartItem = {
-      UserId: user.UserId,
-      ProductId: productId,
-      Quantity: 1,
-    };
-  
-    fetch("https://localhost:44344/api/Carts", {
-      method: "POST",
+  const updateQuantity = (cartId, quantity) => {
+    fetch(`https://localhost:44344/api/Carts/${cartId}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(cartItem),
+      body: JSON.stringify({ Quantity: quantity }),
     })
     .then(response => {
       if (response.ok) {
-        alert("Prodotto aggiunto al carrello");
+        alert("Quantità aggiornata nel carrello");
+      } else {
+        alert("Errore nell'aggiornamento della quantità");
       }
     })
-    .catch(error => console.error("Errore nell'aggiungere al carrello:", error));
+    .catch(error => console.error("Errore nell'aggiornare la quantità:", error));
   };
   
+
+  const addToCart = (productId) => {
+    fetch(`https://localhost:44344/api/Carts/User/${user.UserId}`)
+      .then((response) => response.json())
+      .then((cartItems) => {
+        const existingItem = cartItems.find(
+          (item) => item.ProductId === productId
+        );
+
+        if (existingItem) {
+          updateQuantity(existingItem.CartId, existingItem.Quantity + 1);
+        } else {
+          const newItem = {
+            UserId: user.UserId,
+            ProductId: productId,
+            Quantity: 1,
+          };
+
+          fetch("https://localhost:44344/api/Carts", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newItem),
+          })
+            .then((response) => {
+              if (response.ok) {
+                alert("Prodotto aggiunto al carrello");
+              }
+            })
+            .catch((error) =>
+              console.error("Errore nell'aggiungere al carrello:", error)
+            );
+        }
+      });
+  };
 
   const addToFavorites = () => {
     if (user && product) {
@@ -95,10 +127,12 @@ const ProductDetails = () => {
             )}
             {isLoggedIn && (
               <>
-              <button onClick={() => addToCart(productId)}>Aggiungi al Carrello</button>
-              <button onClick={() => addToFavorites(product.ProductId)}>
-                Aggiungi ai Preferiti
-              </button>
+                <button onClick={() => addToCart(productId)}>
+                  Aggiungi al Carrello
+                </button>
+                <button onClick={() => addToFavorites(product.ProductId)}>
+                  Aggiungi ai Preferiti
+                </button>
               </>
             )}
           </div>

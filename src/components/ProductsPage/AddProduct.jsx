@@ -9,7 +9,6 @@ const AddProduct = () => {
     description: "",
     price: "",
     availability: 1,
-    quantity: "",
     category: "",
   });
 
@@ -35,9 +34,8 @@ const AddProduct = () => {
     const formattedProduct = {
       ...product,
       price: parseFloat(product.price),
-      quantity: parseInt(product.quantity, 10),
     };
-    // Qui inserisci la logica per la POST request al tuo backend
+
     const response = await fetch("https://localhost:44344/api/Products", {
       method: "POST",
       headers: {
@@ -47,10 +45,10 @@ const AddProduct = () => {
     });
 
     if (response.ok) {
-      // Gestisci la risposta di successo
+
       alert("Prodotto aggiunto con successo!");
     } else {
-      // Gestisci errori
+
       alert("Errore nell'aggiunta del prodotto.");
     }
   };
@@ -105,16 +103,6 @@ const AddProduct = () => {
             name="availability"
             checked={product.availability}
             onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Quantità:</label>
-          <input
-            type="number"
-            name="quantity"
-            value={product.quantity}
-            onChange={handleChange}
-            required
           />
         </div>
         <div>
