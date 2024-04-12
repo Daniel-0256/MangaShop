@@ -12,6 +12,8 @@ import EditProduct from "./components/ProductsPage/EditProduct";
 import DeleteProduct from "./components/ProductsPage/DeleteProduct";
 import Favorites from "./components/FavoritesPage/Favorites";
 import Cart from "./components/CartPage/Cart";
+import ConfirmPurchase from "./components/UserDetails/ConfirmPurchase";
+import AddUserDetails from "./components/UserDetails/AddUserDetails";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
             <Route path="/addproduct" element={<AddProduct />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/confirm-purchase" element={<ConfirmPurchase />} />
+            <Route path="/add-user-details" element={<AddUserDetails />} />
           </Routes>
         </div>
       </Router>

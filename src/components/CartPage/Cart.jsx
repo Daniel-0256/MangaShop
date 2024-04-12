@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "../Hooks/UseAuth";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const { user } = useAuth();
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (user) {
@@ -110,6 +112,13 @@ const Cart = () => {
             </div>
           ))}
           <h3>Prezzo Totale: €{totalPrice.toFixed(2)}</h3>
+          <button
+            onClick={() =>
+              navigate("/confirm-purchase", { state: { cartTotal: totalPrice } })
+            }
+          >
+            Procedi all'Ordine
+          </button>
         </div>
       ) : (
         <p>Il tuo carrello è vuoto.</p>
