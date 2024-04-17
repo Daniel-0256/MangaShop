@@ -25,11 +25,18 @@ const Navbar = () => {
             </Link>
           </li>
           {isLoggedIn && user?.Role === "Admin" && (
+            <>
             <li className="nav-item">
               <Link to="/addproduct" className="nav-links">
                 Aggiungi Prodotto
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to="/adminorders" className="nav-links">
+                Ordini Utenti
+              </Link>
+            </li>
+          </>
           )}
           <li className="nav-item">
             <Dropdown>
@@ -45,6 +52,9 @@ const Navbar = () => {
                   <>
                     <Dropdown.Item as={Link} to="/favorites">
                       Preferiti
+                    </Dropdown.Item>
+                    <Dropdown.Item as={Link} to="/orders">
+                      I Tuoi Ordini
                     </Dropdown.Item>
                     <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
                   </>

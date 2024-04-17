@@ -14,6 +14,9 @@ import Favorites from "./components/FavoritesPage/Favorites";
 import Cart from "./components/CartPage/Cart";
 import ConfirmPurchase from "./components/UserDetails/ConfirmPurchase";
 import AddUserDetails from "./components/UserDetails/AddUserDetails";
+import OrdersPageUser from "./components/OrdersPageUser/OrderPageUser";
+import OrderDetailsUser from "./components/OrdersDetailsUser/OrderDetailsUser";
+import AdminOrdersPage from "./components/AdminOrdersPage/AdminOrdersPage";
 
 function App() {
   return (
@@ -34,6 +37,9 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/confirm-purchase" element={<ConfirmPurchase />} />
             <Route path="/add-user-details" element={<AddUserDetails />} />
+            <Route path="/orders" element={<OrdersPageUser />} />
+            <Route path="/order-details/:orderId" element={<OrderDetailsUser />} />
+            <Route path="/adminorders" element={<AdminOrdersPage />} />
           </Routes>
         </div>
       </Router>
