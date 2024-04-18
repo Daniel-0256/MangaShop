@@ -45,7 +45,7 @@ const DeleteProduct = () => {
           })}</p>
         </div>
         <button onClick={handleDelete}>Conferma Eliminazione</button>
-        <Link to="/">Annulla</Link>
+        <button onClick={() => navigate(-1)}>Torna Indietro</button>
       </div>
       ) : (
         <p>Caricamento...</p>

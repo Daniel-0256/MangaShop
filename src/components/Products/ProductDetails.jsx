@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/UseAuth";
 
 const ProductDetails = () => {
   const { productId } = useParams();
   const { isLoggedIn, user } = useAuth();
   const [product, setProduct] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`https://localhost:44344/api/Products/${productId}`)
@@ -133,6 +135,7 @@ const ProductDetails = () => {
                 <button onClick={() => addToFavorites(product.ProductId)}>
                   Aggiungi ai Preferiti
                 </button>
+                <button onClick={() => navigate(-1)}>Torna Indietro</button>
               </>
             )}
           </div>

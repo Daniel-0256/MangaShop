@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/UseAuth";
 
-const AdminOrdersPage = () => {
+const AdminOrders = () => {
   const [orders, setOrders] = useState([]);
   const navigate = useNavigate();
   const { isLoggedIn, user } = useAuth();
@@ -103,6 +103,12 @@ const AdminOrdersPage = () => {
             </p>
             <p>Email: {order.Users.Email}</p>
             <button
+              onClick={() => navigate(`/orderdetails-admin/${order.OrderId}`)}
+              style={{ margin: '10px', backgroundColor: 'blue', color: 'white' }}
+            >
+              Visualizza Dettagli
+            </button>
+            <button
               onClick={() => deleteOrder(order.OrderId)}
               style={{ backgroundColor: "red", color: "white" }}
             >
@@ -117,4 +123,4 @@ const AdminOrdersPage = () => {
   );
 };
 
-export default AdminOrdersPage;
+export default AdminOrders;

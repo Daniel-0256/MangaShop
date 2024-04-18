@@ -119,9 +119,13 @@ const Cart = () => {
           >
             Procedi all'Ordine
           </button>
+          <button onClick={() => navigate(-1)}>Torna Indietro</button>
         </div>
       ) : (
+        <>
         <p>Il tuo carrello è vuoto.</p>
+        <button onClick={() => navigate(-1)}>Torna Indietro</button>
+        </>
       )}
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/UseAuth';
 
-const OrdersPageUser = () => {
+const OrdersUser = () => {
     const { user } = useAuth();
     const [orders, setOrders] = useState([]);
     const navigate = useNavigate();
@@ -43,4 +43,4 @@ const OrdersPageUser = () => {
     );
 };
 
-export default OrdersPageUser;
+export default OrdersUser;

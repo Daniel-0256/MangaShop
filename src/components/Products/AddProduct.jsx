@@ -30,7 +30,6 @@ const AddProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Converte price e quantity in numeri
     const formattedProduct = {
       ...product,
       price: parseFloat(product.price),
@@ -45,10 +44,16 @@ const AddProduct = () => {
     });
 
     if (response.ok) {
-
+      setProduct({
+        nameProduct: "",
+        image: "",
+        description: "",
+        price: "",
+        availability: 1,
+        category: "",
+      });
       alert("Prodotto aggiunto con successo!");
     } else {
-
       alert("Errore nell'aggiunta del prodotto.");
     }
   };
@@ -120,6 +125,7 @@ const AddProduct = () => {
           </select>
         </div>
         <button type="submit">Aggiungi Prodotto</button>
+        <button onClick={() => navigate(-1)}>Torna Indietro</button>
       </form>
     </div>
   );

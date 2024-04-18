@@ -115,8 +115,8 @@ const EditProduct = () => {
           </select>
         </label>
         <button type="submit">Salva Modifiche</button>
-        <Link to="/">Annulla</Link>
       </form>
+      <button onClick={() => navigate(-1)}>Torna Indietro</button>
     </div>
   );
 };

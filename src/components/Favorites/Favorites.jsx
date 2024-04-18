@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "../Hooks/UseAuth";
+import { useNavigate } from "react-router-dom";
 
 const Favorites = () => {
     const { user } = useAuth();
     const [favorites, setFavorites] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (user) {
@@ -56,10 +58,14 @@ const Favorites = () => {
                             <img src={fav.Products.Image} alt={fav.Products.NameProduct} style={{ maxWidth: "100%", height: "auto" }} />
                             <p>{fav.Products.Description}</p>
                             <button onClick={() => removeFromFavorites(fav.FavoriteId)}>Rimuovi dai Preferiti</button>
+                            <button onClick={() => navigate(-1)}>Torna Indietro</button>
                         </div>
                     ))
                 ) : (
+                    <>
                     <p>Non hai prodotti nei preferiti.</p>
+                    <button onClick={() => navigate(-1)}>Torna Indietro</button>
+                    </>
                 )}
             </div>
         </div>

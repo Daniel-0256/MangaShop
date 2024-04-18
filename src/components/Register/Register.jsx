@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const RegisterPage = () => {
+const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -63,5 +63,5 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default Register;
 
