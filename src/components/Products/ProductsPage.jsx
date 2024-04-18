@@ -14,7 +14,6 @@ function ProductsPage() {
       nameProduct
     )}`;
 
-    // Utilizza fetch per ottenere i dati dall'API
     fetch(url)
       .then((response) => {
         if (!response.ok) {

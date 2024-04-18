@@ -18,6 +18,7 @@ import OrdersUser from "./components/OrdersUser/OrdersUser";
 import OrderDetailsUser from "./components/OrdersDetailsUser/OrderDetailsUser";
 import AdminOrders from "./components/AdminOrders/AdminOrders";
 import AdminOrderDetails from "./components/AdminOrderDetails/AdminOrderDetails";
+import SearchPage from "./components/SearchPage/SearchPage";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
             <Route path="/order-details/:orderId" element={<OrderDetailsUser />} />
             <Route path="/adminorders" element={<AdminOrders />} />
             <Route path="/orderdetails-admin/:orderId" element={<AdminOrderDetails />} />
+            <Route path="/searchpage" element={<SearchPage />} />
           </Routes>
         </div>
       </Router>

@@ -1,80 +1,86 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
 import "./Navbar.css";
 import useAuth from "../Hooks/UseAuth";
 
 const Navbar = () => {
   const { isLoggedIn, user } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = () => {
     localStorage.removeItem("user");
     window.location.reload();
   };
 
+  const handleSearchClick = () => {
+    navigate('/searchpage');
+  };
+
+  const showSearchBar = location.pathname !== '/searchpage';
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <Link to="" className="navbar-logo">
-          MangaShop
-        </Link>
-        <ul className="nav-menu">
-          <li className="nav-item">
-            <Link to="/" className="nav-links">
-              Home
-            </Link>
-          </li>
-          {isLoggedIn && user?.Role === "Admin" && (
-            <>
-            <li className="nav-item">
-              <Link to="/addproduct" className="nav-links">
-                Aggiungi Prodotto
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/adminorders" className="nav-links">
-                Ordini Utenti
-              </Link>
-            </li>
-          </>
-          )}
-          <li className="nav-item">
-            <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                <i className="fas fa-user"></i>{" "}
-                {isLoggedIn && user
-                  ? `Ciao, ${user.Name + " " + user.Surname}`
-                  : ""}
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                {isLoggedIn ? (
-                  <>
-                    <Dropdown.Item as={Link} to="/favorites">
-                      Preferiti
-                    </Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/orders">
-                      I Tuoi Ordini
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
-                  </>
-                ) : (
-                  <>
-                    <Dropdown.Item as={Link} to="/login">
-                      Login
-                    </Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/register">
-                      Register
-                    </Dropdown.Item>
-                  </>
-                )}
-              </Dropdown.Menu>
-            </Dropdown>
-          </li>
-          <li>
-            <Link to="/cart">Carrello</Link>
-          </li>
-        </ul>
+        <div>
+          <Link className="navbar-logo">
+            MangaShop
+          </Link>
+        </div>
+        <div className="icon-container">
+        {showSearchBar && (
+            <input
+              type="text"
+              placeholder="Cerca prodotti..."
+              onClick={handleSearchClick}
+              className="search-input"
+              style={{ cursor: 'pointer' }}
+            />
+        )}
+          <Dropdown>
+            <Dropdown.Toggle className="icon">
+            <i className="fa-solid fa-bars"></i>
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item as={Link} to="/">Home</Dropdown.Item>
+              {isLoggedIn && user?.Role === "Admin" && (
+                <>
+                  <Dropdown.Item as={Link} to="/addproduct">Aggiungi Prodotto</Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/adminorders">Ordini Utenti</Dropdown.Item>
+                </>
+              )}
+              {isLoggedIn && (
+                <>
+                  <Dropdown.Item as={Link} to="/orders">I Tuoi Ordini</Dropdown.Item>
+                </>
+              )}
+            </Dropdown.Menu>
+          </Dropdown>
+          <Dropdown>
+            <Dropdown.Toggle className="icon">
+              <i className="fas fa-user"></i>
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              {isLoggedIn ? (
+                <>
+                  <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                </>
+              ) : (
+                <>
+                  <Dropdown.Item as={Link} to="/login">Login</Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/register">Register</Dropdown.Item>
+                </>
+              )}
+            </Dropdown.Menu>
+          </Dropdown>
+          <Link to="/favorites" className="icon">
+          <i className="fa-solid fa-heart"></i>
+          </Link>
+          <Link to="/cart" className="icon">
+          <i className="fa-solid fa-cart-shopping"></i>
+          </Link>
+        </div>
       </div>
     </nav>
   );

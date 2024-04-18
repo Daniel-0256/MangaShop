@@ -1,47 +1,78 @@
+
 .navbar {
-    background: #101522;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-  }
+  background-color: #101522;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  font-family: 'Arial', sans-serif;
+  box-sizing: border-box;
+}
+
+.navbar-logo {
+    font-family: "Dokdo", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.navbar-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  color: #fff;
+  padding-left: 5px;
+  background-color: transparent;
+  border: none;
+}
+
+.navbar-logo {
+  text-decoration: none;
+  color: #fff;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-toggle.icon, .dropdown-toggle.icon:focus, .dropdown-toggle.icon:active {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  padding: 0px 0px 0px 5px;
+}
+
+@media (max-width: 768px) {
   
+}
+
+@media (max-width: 480px) {
+
   .navbar-container {
-    display: flex;
-    height: 80px;
-    z-index: 1;
+    flex-direction: column;
+    align-items: flex-start
+  }
+
+  .icon-container {
+    background-color: #fff;
     width: 100vw;
-    padding: 0 24px;
   }
-  
-  .navbar-logo {
-    color: #fff;
-    justify-self: start;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
+
+  .icon {
+    color: black;
   }
-  
-  .nav-menu {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    text-align: center;
-  }
-  
-  .nav-links {
-    color: #fff;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-  }
-  
-  .nav-links:hover {
-    background-color: #4b59f7;
-    border-bottom: 2px solid #4b59f7;
-    transition: all 0.2s ease-out;
-  }
-  
+}
