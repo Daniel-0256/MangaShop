@@ -1,54 +1,77 @@
-
 .navbar {
-  background-color: #101522;
+  background-color: #252525;
   color: #fff;
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 80px;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   box-sizing: border-box;
+  padding: 0px;
 }
 
 .navbar-logo {
-    font-family: "Dokdo", system-ui;
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Dokdo", system-ui;
+  font-size: 50px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.menu-logo {
+  display: flex;
+  align-items: center;
 }
 
 .navbar-container {
-  width: 100%;
-  max-width: 1200px;
+  width: 100vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+#icon-menu {
+  color: #fff;
+  padding: 0px 5px 0px 10px;
+}
+
+#icon-menu i {
+  font-size: 30px;
+}
+
+.iconSearch-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+  width: 70vw;
+}
+
 .icon-container {
   display: flex;
-  align-items: center;
 }
 
 .icon {
   color: #fff;
-  padding-left: 5px;
-  background-color: transparent;
+  padding-left: 20px;
   border: none;
+  font-size: 30px;
 }
 
-.navbar-logo {
-  text-decoration: none;
-  color: #fff;
-  font-size: 2rem;
-  display: flex;
-  align-items: center;
+.search-input {
+  background-color: rgb(219, 207, 207);
+  border: none;
+  border-radius: 2px;
+  width: 45vw;
+  cursor: pointer;
+  padding: 5px;
 }
 
 .dropdown-toggle::after {
   display: none;
 }
 
-.dropdown-toggle.icon, .dropdown-toggle.icon:focus, .dropdown-toggle.icon:active {
+.dropdown-toggle.icon,
+.dropdown-toggle.icon:hover,
+.dropdown-toggle.icon:focus,
+.dropdown-toggle.icon:active {
   background-color: transparent;
   border: none;
   box-shadow: none;
@@ -57,22 +80,78 @@
 }
 
 @media (max-width: 768px) {
-  
+
+  .navbar-logo {
+    font-size: 30px;
+  }
+
+  #icon-menu i {
+    font-size: 20px;
+  }
+
+  .menu-logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .icon {
+    padding-left: 10px;
+    font-size: 20px;
+  }
+
+  .search-input {
+    background-color: rgb(219, 207, 207);
+    border: none;
+    border-radius: 2px;
+    width: 40vw;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 2px;
+  }
+
 }
 
 @media (max-width: 480px) {
-
   .navbar-container {
     flex-direction: column;
-    align-items: flex-start
+    align-items: flex-start;
   }
 
-  .icon-container {
+  .menu-logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-logo {
+    font-size: 35px;
+  }
+
+  .iconSearch-container {
     background-color: #fff;
     width: 100vw;
+    padding: 10px;
+  }
+
+  #icon-menu i {
+    font-size: 25px;
   }
 
   .icon {
     color: black;
+    font-size: 20px;
+    padding-left: 5px;
+  }
+
+  .icon i:hover,
+  .icon i:focus,
+  .icon i:active {
+    color: black;
+  }
+
+  .search-input {
+    background-color: rgb(219, 207, 207);
+    border: none;
+    border-radius: 7px;
+    width: 70vw;
   }
 }

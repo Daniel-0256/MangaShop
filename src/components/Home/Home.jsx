@@ -1,10 +1,11 @@
-import "./Home.css";
-import { Carousel, Card, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Carousel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import "./Home.css";  // Assicurati che il file CSS sia correttamente collegato
 
 const Home = () => {
   return (
-    <div>
+    <div className="home-container">
       <div className="carousel-container">
         <Carousel id="Carousel">
           <Carousel.Item>
@@ -27,68 +28,56 @@ const Home = () => {
           </Carousel.Item>
         </Carousel>
       </div>
-
-      <Row                                                                            >
+      
+      <div className="container-card">
         {/* Prima Card */}
-        <Col className="container-card">
-          <Link
-            to={`/products/${encodeURIComponent("One Piece")}`}
-            style={{ textDecoration: "none" }}
-            className="a"
-          >
-            <Card className="card">
-              <Card.Img
-                variant="top"
+        <div className="card-container">
+          <Link to={`/products/${encodeURIComponent("One Piece")}`} className="card-link">
+            <div className="card">
+              <img
                 src="https://cdn.anisearch.it/images/anime/cover/2/2227_600.webp"
+                alt="One Piece"
                 className="card-img"
               />
-              <Card.Body>
-                <Card.Title>One Piece</Card.Title>
-              </Card.Body>
-            </Card>
+              <div className="card-body">
+                <h5 className="card-title">One Piece</h5>
+              </div>
+            </div>
           </Link>
-        </Col>
+        </div>
 
         {/* Seconda Card */}
-        <Col className="container-card">
-          <Link
-            to={`/products/${encodeURIComponent("Dragon Ball")}`}
-            style={{ textDecoration: "none" }}
-            className="a"
-          >
-            <Card className="card">
-              <Card.Img
-                variant="top"
+        <div className="card-container">
+          <Link to={`/products/${encodeURIComponent("Dragon Ball")}`} className="card-link">
+            <div className="card">
+              <img
                 src="https://www.antoniogenna.net/doppiaggio/anim/dragonball.jpg"
+                alt="Dragon Ball"
                 className="card-img"
               />
-              <Card.Body>
-                <Card.Title>Dragon Ball</Card.Title>
-              </Card.Body>
-            </Card>
+              <div className="card-body">
+                <h5 className="card-title">Dragon Ball</h5>
+              </div>
+            </div>
           </Link>
-        </Col>
+        </div>
 
         {/* Terza Card */}
-        <Col className="container-card">
-          <Link
-            to={`/products/${encodeURIComponent("Naruto")}`}
-            style={{ textDecoration: "none" }}
-            className="a"
-          >
-            <Card className="card">
-              <Card.Img
-                variant="top"
+        <div className="card-container">
+          <Link to={`/products/${encodeURIComponent("Naruto")}`} className="card-link">
+            <div className="card">
+              <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpDudPcCdZqXCEVUpaIQmwy_G0Pw7-Qd7f2cHCnEkVEQ&s"
+                alt="Naruto"
                 className="card-img"
               />
-              <Card.Body>
-                <Card.Title>Naruto</Card.Title>
-              </Card.Body>
-            </Card>
+              <div className="card-body">
+                <h5 className="card-title">Naruto</h5>
+              </div>
+            </div>
           </Link>
-        </Col>
-      </Row>
+        </div>
+      </div>
     </div>
   );
 };

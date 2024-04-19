@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const SearchPage = () => {
     const [searchResults, setSearchResults] = useState([]);
@@ -61,17 +61,19 @@ const SearchPage = () => {
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
             {searchResults.length > 0 ? (
               searchResults.map(product => (
-                <div key={product.ProductId} style={{ margin: "20px", padding: "10px"}}>
-                  <img src={product.Image} alt={product.NameProduct} />
-                  <h5>{product.NameProduct}</h5>
-                  <p>
-                    {product.Price.toLocaleString("it-IT", {
-                      style: "currency",
-                      currency: "EUR",
-                    })}
-                  </p>
-                  <p>{product.Availability ? 'Available' : 'Not Available'}</p>
-                </div>
+                <Link to={`/product/details/${product.ProductId}`} key={product.ProductId} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <div style={{ margin: "20px", padding: "10px"}}>
+                    <img src={product.Image} alt={product.NameProduct} />
+                    <h5>{product.NameProduct}</h5>
+                    <p>
+                      {product.Price.toLocaleString("it-IT", {
+                        style: "currency",
+                        currency: "EUR",
+                      })}
+                    </p>
+                    <p>{product.Availability ? 'Available' : 'Not Available'}</p>
+                  </div>
+                </Link>
               ))
             ) : (
               <p>No results found.</p>

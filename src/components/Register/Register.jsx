@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Register.css";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -27,14 +28,15 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleRegister}>
+    <div className="registration-container">
+      <form onSubmit={handleRegister} className="registration-form">
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Name"
           required
+          className="input-field"
         />
         <input
           type="text"
@@ -42,6 +44,7 @@ const Register = () => {
           onChange={(e) => setSurname(e.target.value)}
           placeholder="Surname"
           required
+          className="input-field"
         />
         <input
           type="email"
@@ -49,6 +52,7 @@ const Register = () => {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
           required
+          className="input-field"
         />
         <input
           type="password"
@@ -56,11 +60,13 @@ const Register = () => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
           required
+          className="input-field"
         />
-        <button type="submit">Register</button>
+        <button type="submit" className="registration-button">Registrati</button>
       </form>
     </div>
   );
+  
 };
 
 export default Register;

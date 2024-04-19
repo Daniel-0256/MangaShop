@@ -3,6 +3,8 @@ body {
   background-color: #f4f4f4;
 }
 
+/* CAROUSEL */
+
 .carousel-container {
   display: flex;
   justify-content: center;
@@ -10,7 +12,7 @@ body {
 }
 
 #Carousel {
-  width: 80vw;
+  width: 100vw;
   margin: auto;
 }
 
@@ -22,18 +24,25 @@ body {
 }
 
 .img-carousel {
-  width: 100%;
-  height: 400px;
+  width: 90vw;
   margin-top: 20px;
   object-fit: contain;
   object-position: center center;
   background-color: #afa6a6;
 }
 
+/* CARD */
+
 .container-card {
   display: flex;
+  justify-content: space-evenly;
+}
+
+.card-container {
+  display: flex;
   justify-content: center;
-  padding: 0;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -45,17 +54,74 @@ body {
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
 }
 
 .card-img {
+  width: 100%;
   height: 250px;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   transition: transform 0.2s ease;
+}
+
+.card-body {
+  padding: 10px;
+  text-align: center;
 }
 
 .card:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .img-carousel {
+    width: 90vw;
+  }
+
+  .container-card {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .card-container {
+   display: flex;
+  
+  }
+
+  #Carousel {
+    width: 95vw;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .img-carousel {
+    width: 90vw;
+  }
+
+  .carousel-container, .home-container {
+    padding: 10px;
+  }
+
+  #Carousel {
+    width: 100vw;
+  }
+  
+  .container-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-container {
+    grid-template-columns: 1fr;
+  }
 }
