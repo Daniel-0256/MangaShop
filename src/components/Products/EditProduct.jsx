@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import useAuth from "../Hooks/UseAuth";
+import "./EditProduct.css"
 
 const EditProduct = () => {
   const { productId } = useParams();
@@ -54,10 +54,10 @@ const EditProduct = () => {
   };
 
   return (
-    <div>
-      <h1>Modifica Prodotto</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
+    <div className="edit-container">
+      <h1 className="h1-editProduct">Modifica Prodotto</h1>
+      <form className="form-editProduct" onSubmit={handleSubmit}>
+        <label className="label-editProduct">
           Nome Prodotto:
           <input
             type="text"
@@ -66,7 +66,7 @@ const EditProduct = () => {
             onChange={handleInputChange}
           />
         </label>
-        <label>
+        <label className="label-editProduct">
           Immagine URL:
           <input
             type="text"
@@ -75,7 +75,7 @@ const EditProduct = () => {
             onChange={handleInputChange}
           />
         </label>
-        <label>
+        <label className="label-editProduct">
           Descrizione:
           <textarea
             name="Description"
@@ -83,7 +83,7 @@ const EditProduct = () => {
             onChange={handleInputChange}
           />
         </label>
-        <label>
+        <label className="label-editProduct">
           Prezzo:
           <input
             type="number"
@@ -92,7 +92,7 @@ const EditProduct = () => {
             onChange={handleInputChange}
           />
         </label>
-        <label>
+        <label className="form-editProduct">
           Disponibilità:
           <input
             type="checkbox"
@@ -101,7 +101,7 @@ const EditProduct = () => {
             onChange={handleInputChange}
           />
         </label>
-        <label>
+        <label className="label-editProduct">
           Categoria:
           <select
             name="Category"
@@ -114,9 +114,9 @@ const EditProduct = () => {
             <option value="Funko Pop">Funko Pop</option>
           </select>
         </label>
-        <button type="submit">Salva Modifiche</button>
+        <button className="btn-salvaModifiche" type="submit">Salva Modifiche</button>
       </form>
-      <button onClick={() => navigate(-1)}>Torna Indietro</button>
+      <button className="btn-indietroModifiche" onClick={() => navigate(-1)}>Torna Indietro</button>
     </div>
   );
 };

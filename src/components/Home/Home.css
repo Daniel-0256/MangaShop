@@ -1,7 +1,3 @@
-body {
-  font-family: "Open Sans", sans-serif;
-  background-color: #f4f4f4;
-}
 
 /* CAROUSEL */
 
@@ -9,10 +5,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 90vh;
 }
 
 #Carousel {
-  width: 100vw;
+  width: 95vw;
   margin: auto;
 }
 
@@ -20,15 +17,54 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: auto;
+  height: 80vh;
 }
 
 .img-carousel {
-  width: 90vw;
-  margin-top: 20px;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   object-position: center center;
-  background-color: #afa6a6;
+}
+
+.carousel-item {
+  transition: transform 0.5s ease-in-out;
+}
+
+@media (max-width: 768px) {
+
+  .carousel-container {
+    height: 60vh;
+  }
+
+  #Carousel {
+    width: 95vw;
+  }
+
+  .image-wrapper {
+    height: 50vh;
+  }
+  
+}
+
+@media (max-width: 480px) {
+
+  .carousel-container {
+    height: 40vh;
+  }
+
+  #Carousel {
+    width: 95vw;
+  }
+
+  .image-wrapper {
+    height: 40vh;
+    border: none;
+  }
+
+  .img-carousel {
+    object-fit: contain;
+  }
 }
 
 /* CARD */
@@ -82,9 +118,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  .img-carousel {
-    width: 90vw;
-  }
 
   .container-card {
     display: flex;
@@ -95,25 +128,9 @@ body {
    display: flex;
   
   }
-
-  #Carousel {
-    width: 95vw;
-  }
 }
 
 @media (max-width: 480px) {
-
-  .img-carousel {
-    width: 90vw;
-  }
-
-  .carousel-container, .home-container {
-    padding: 10px;
-  }
-
-  #Carousel {
-    width: 100vw;
-  }
   
   .container-card {
     display: flex;

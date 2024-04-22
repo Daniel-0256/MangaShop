@@ -15,6 +15,7 @@ const AddUserDetails = () => {
     CardNumber: "",
     CardExpiryDate: "",
     CardCVV: "",
+    IsActive: true,
   });
   const navigate = useNavigate();
 
@@ -44,7 +45,7 @@ const AddUserDetails = () => {
     })
       .then((response) =>
         response.ok
-          ? navigate("/user-details", { state: { cartTotal } })
+          ? navigate("/confirm-purchase", { state: { cartTotal } })
           : response
               .text()
               .then((text) =>

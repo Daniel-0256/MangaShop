@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "../Hooks/UseAuth";
 import { useNavigate } from "react-router-dom";
+import "./Cart.css";
 
 const Cart = () => {
   const { user } = useAuth();
@@ -79,52 +80,73 @@ const Cart = () => {
   };
 
   return (
-    <div>
-      <h1>Il Tuo Carrello</h1>
+    <div className="cart-container">
+      <h1 className="cart-title">Il Tuo Carrello</h1>
       {cartItems.length > 0 ? (
         <div>
           {cartItems.map((item) => (
-            <div key={item.CartId}>
-              <h2>{item.Products.NameProduct}</h2>
-              <img
-                src={item.Products.Image}
-                alt={item.Products.NameProduct}
-                style={{ maxWidth: "100px", height: "auto" }}
-              />
-              <p>Prezzo: €{item.Products.Price}</p>
-              <p>
-                Quantità:
+            <div key={item.CartId} className="cart-item">
+              <div className="container-img">
+                <img
+                  src={item.Products.Image}
+                  alt={item.Products.NameProduct}
+                />
+              </div>
+              <div className="container-pqb">
+                <p className="cart-name">{item.Products.NameProduct}</p>
+                <p className="cart-price">Prezzo: €{item.Products.Price}</p>
+                <p className="cart-quantity">
+                  Quantità:
+                  <button
+                    className="quantity-btn"
+                    onClick={() =>
+                      updateQuantity(item.CartId, item.Quantity - 1)
+                    }
+                  >
+                    -
+                  </button>
+                  {item.Quantity}
+                  <button
+                    className="quantity-btn"
+                    onClick={() =>
+                      updateQuantity(item.CartId, item.Quantity + 1)
+                    }
+                  >
+                    +
+                  </button>
+                </p>
                 <button
-                  onClick={() => updateQuantity(item.CartId, item.Quantity - 1)}
+                  className="remove-btn"
+                  onClick={() => removeItemFromCart(item.CartId)}
                 >
-                  -
+                  Rimuovi
                 </button>
-                {item.Quantity}
-                <button
-                  onClick={() => updateQuantity(item.CartId, item.Quantity + 1)}
-                >
-                  +
-                </button>
-              </p>
-              <button onClick={() => removeItemFromCart(item.CartId)}>
-                Rimuovi
-              </button>
+              </div>
             </div>
           ))}
-          <h3>Prezzo Totale: €{totalPrice.toFixed(2)}</h3>
+          <h3 className="total-price">
+            Prezzo Totale: €{totalPrice.toFixed(2)}
+          </h3>
           <button
+            className="checkout-btn"
             onClick={() =>
-              navigate("/confirm-purchase", { state: { cartTotal: totalPrice } })
+              navigate("/confirm-purchase", {
+                state: { cartTotal: totalPrice },
+              })
             }
           >
             Procedi all'Ordine
           </button>
-          <button onClick={() => navigate(-1)}>Torna Indietro</button>
+          <button className="back-btn" onClick={() => navigate(-1)}>
+            Torna Indietro
+          </button>
         </div>
       ) : (
         <>
-        <p>Il tuo carrello è vuoto.</p>
-        <button onClick={() => navigate(-1)}>Torna Indietro</button>
+          <p className="cart-empty">Il tuo carrello è vuoto.</p>
+          <button className="back-btn" onClick={() => navigate(-1)}>
+            Torna Indietro
+          </button>
         </>
       )}
     </div>

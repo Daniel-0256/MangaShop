@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/UseAuth";
+import "./AddProduct.css";
 
 const AddProduct = () => {
   const [product, setProduct] = useState({
@@ -59,11 +60,11 @@ const AddProduct = () => {
   };
 
   return (
-    <div>
-      <h2>Aggiungi Prodotto</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="add-container">
+      <h1 className="h1-addproduct">Aggiungi Prodotto</h1>
+      <form className="form-addproduct" onSubmit={handleSubmit}>
         <div>
-          <label>Nome Prodotto:</label>
+          <label className="label-addproduct">Nome Prodotto:</label>
           <input
             type="text"
             name="nameProduct"
@@ -73,7 +74,7 @@ const AddProduct = () => {
           />
         </div>
         <div>
-          <label>Immagine (URL):</label>
+          <label className="label-addproduct">Immagine (URL):</label>
           <input
             type="text"
             name="image"
@@ -83,7 +84,7 @@ const AddProduct = () => {
           />
         </div>
         <div>
-          <label>Descrizione:</label>
+          <label className="label-addproduct">Descrizione:</label>
           <textarea
             name="description"
             value={product.description}
@@ -92,7 +93,7 @@ const AddProduct = () => {
           />
         </div>
         <div>
-          <label>Prezzo:</label>
+          <label className="label-addproduct">Prezzo:</label>
           <input
             type="number"
             name="price"
@@ -102,7 +103,7 @@ const AddProduct = () => {
           />
         </div>
         <div>
-          <label>Disponibilità:</label>
+          <label className="label-addproduct">Disponibilità:</label>
           <input
             type="checkbox"
             name="availability"
@@ -111,7 +112,7 @@ const AddProduct = () => {
           />
         </div>
         <div>
-          <label>Categoria:</label>
+          <label className="label-addproduct">Categoria:</label>
           <select
             name="category"
             value={product.category}
@@ -124,8 +125,8 @@ const AddProduct = () => {
             <option value="Funko Pop">Funko Pop</option>
           </select>
         </div>
-        <button type="submit">Aggiungi Prodotto</button>
-        <button onClick={() => navigate(-1)}>Torna Indietro</button>
+        <button className="btn-aggiungiProdotto" type="submit">Aggiungi Prodotto</button>
+        <button className="btn-indietroProdotto" onClick={() => navigate(-1)}>Torna Indietro</button>
       </form>
     </div>
   );

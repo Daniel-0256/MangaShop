@@ -24,11 +24,11 @@ const ConfirmPurchase = () => {
   const fetchUserDetails = () => {
     fetch(`https://localhost:44344/api/UserDetails/User/${user.UserId}`)
       .then((response) => response.json())
-      .then((data) => setDetails(data))
+      .then((data) => setDetails(data.filter(detail => detail.IsActive)))
       .catch((error) =>
         console.error("Errore nel recupero dei dettagli utente:", error)
       );
-  };
+  };  
 
   const fetchCartItems = () => {
     fetch(`https://localhost:44344/api/Carts/User/${user.UserId}`)
@@ -43,24 +43,39 @@ const ConfirmPurchase = () => {
   };
 
   const handleDelete = (userDetailsId) => {
-    fetch(`https://localhost:44344/api/UserDetails/${userDetailsId}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((response) => {
-        if (response.ok) {
-          setDetails(
-            details.filter((detail) => detail.UserDetailsId !== userDetailsId)
-          );
-          alert("Dettagli eliminati con successo.");
-        } else {
-          throw new Error("Failed to delete the user details.");
-        }
-      })
-      .catch((error) =>
-        console.error("Errore nell'eliminazione dei dettagli utente:", error)
-      );
-  };
+    // Trova il dettaglio utente corrente dallo stato
+    const userDetails = details.find(detail => detail.UserDetailsId === userDetailsId);
+    if (!userDetails) {
+        console.error("User details not found.");
+        return;
+    }
+
+    // Prepara il corpo della richiesta con tutti i campi necessari
+    const updatedDetails = { ...userDetails, IsActive: false };
+
+    const requestOptions = {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedDetails)
+    };
+
+    fetch(`https://localhost:44344/api/UserDetails/${userDetailsId}`, requestOptions)
+        .then(response => {
+            if (response.ok) {
+                setDetails(details.map(detail =>
+                    detail.UserDetailsId === userDetailsId ? { ...detail, IsActive: false } : detail
+                ));
+                alert("Dettagli disattivati con successo.");
+            } else {
+                throw new Error("Failed to deactivate the user details.");
+            }
+        })
+        .catch(error => {
+            console.error("Errore nella disattivazione dei dettagli utente:", error);
+            alert(error.message);
+        });
+};
+
 
   const handleSelectAddress = (id) => {
     setSelectedAddressId(id);
@@ -139,14 +154,14 @@ const ConfirmPurchase = () => {
 
   return (
     <div>
-      <h1>Dettagli Utente</h1>
+      <h1>Conferma l'ordine</h1>
       <h2>Prezzo Totale del Carrello: €{cartTotal.toFixed(2)}</h2>
       <h2>Costi di Spedizione: €{shippingCost.toFixed(2)}</h2>
       <h2>
         Totale Comprensivo di Spedizione: €{totalIncludingShipping.toFixed(2)}
       </h2>
-      {details.length > 0 ? (
-        details.map((detail) => (
+      {details.filter(detail => detail.IsActive).length > 0 ? (
+        details.filter(detail => detail.IsActive).map((detail) => (
           <div key={detail.UserDetailsId}>
             <input
               type="checkbox"
@@ -176,6 +191,7 @@ const ConfirmPurchase = () => {
       <button onClick={() => navigate(-1)}>Torna Indietro</button>
     </div>
   );
+
 };
 
 export default ConfirmPurchase;

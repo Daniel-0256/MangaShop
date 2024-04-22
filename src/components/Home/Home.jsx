@@ -1,7 +1,7 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import "./Home.css";  // Assicurati che il file CSS sia correttamente collegato
+import "./Home.css";
 
 const Home = () => {
   return (
@@ -12,8 +12,35 @@ const Home = () => {
             <div className="image-wrapper">
               <img
                 className="img-carousel d-block"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRixYF_u2KysPTzJueuPqJx-VYiuRrTTApN8en2DSCiGw&s"
+                src="https://www.akibagamers.it/wp-content/uploads/2021/06/one-piece-come-finisce.jpg"
                 alt="Primo slide"
+              />
+            </div>
+          </Carousel.Item>
+          <Carousel.Item>
+            <div className="image-wrapper">
+              <img
+                className="img-carousel d-block"
+                src="https://ilovevg.it/wp-content/uploads/2020/05/anime-e-manga-generi.jpg"
+                alt="Secondo slide"
+              />
+            </div>
+          </Carousel.Item>
+          <Carousel.Item>
+            <div className="image-wrapper">
+              <img
+                className="img-carousel d-block"
+                src="https://onepiecepower.com/manga8/onepiece/volumi/images/cover.jpg"
+                alt="Secondo slide"
+              />
+            </div>
+          </Carousel.Item>
+          <Carousel.Item>
+            <div className="image-wrapper">
+              <img
+                className="img-carousel d-block"
+                src="https://www.justnerd.it/wp-content/uploads/2022/09/berserk-deluxe-edition-panini-planet-manga.jpg"
+                alt="Secondo slide"
               />
             </div>
           </Carousel.Item>

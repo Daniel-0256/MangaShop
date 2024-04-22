@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/UseAuth";
+import "./DeleteProduct.css";
 
 const DeleteProduct = () => {
   const { productId } = useParams();
@@ -32,21 +33,28 @@ const DeleteProduct = () => {
   };
 
   return (
-    <div>
+    <div className="confirmation-container">
       {product ? (
         <div>
-        <h2>Sei sicuro di voler eliminare il prodotto "{product.NameProduct}"?</h2>
-        <div className="product-details">
-          <img src={product.Image} alt={product.NameProduct} style={{ maxWidth: "100%", height: "auto" }} />
-          <p><strong>Nome:</strong> {product.NameProduct}</p>
-          <p><strong>Prezzo:</strong> €{product.Price.toLocaleString("it-IT", {
-            style: "currency",
-            currency: "EUR",
-          })}</p>
+          <h2 className="confirmation-title">
+            Sei sicuro di voler eliminare il prodotto "{product.NameProduct}"?
+          </h2>
+          <div className="product-details">
+            <img src={product.Image} alt={product.NameProduct} />
+          </div>
+          <button
+            className="button-delete delete-button"
+            onClick={handleDelete}
+          >
+            Conferma Eliminazione
+          </button>
+          <button
+            className="button-delete back-button"
+            onClick={() => navigate(-1)}
+          >
+            Torna Indietro
+          </button>
         </div>
-        <button onClick={handleDelete}>Conferma Eliminazione</button>
-        <button onClick={() => navigate(-1)}>Torna Indietro</button>
-      </div>
       ) : (
         <p>Caricamento...</p>
       )}

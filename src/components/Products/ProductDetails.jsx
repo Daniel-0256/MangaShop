@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/UseAuth";
+import "./ProductDetails.css";
 
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -24,16 +25,17 @@ const ProductDetails = () => {
       },
       body: JSON.stringify({ Quantity: quantity }),
     })
-    .then(response => {
-      if (response.ok) {
-        alert("Quantità aggiornata nel carrello");
-      } else {
-        alert("Errore nell'aggiornamento della quantità");
-      }
-    })
-    .catch(error => console.error("Errore nell'aggiornare la quantità:", error));
+      .then((response) => {
+        if (response.ok) {
+          alert("Quantità aggiornata nel carrello");
+        } else {
+          alert("Errore nell'aggiornamento della quantità");
+        }
+      })
+      .catch((error) =>
+        console.error("Errore nell'aggiornare la quantità:", error)
+      );
   };
-  
 
   const addToCart = (productId) => {
     fetch(`https://localhost:44344/api/Carts/User/${user.UserId}`)
@@ -93,51 +95,64 @@ const ProductDetails = () => {
   return (
     <div>
       {product ? (
-        <div>
-          <h1>Dettagli del Prodotto</h1>
-          <div>
-            <h2>{product.NameProduct}</h2>
+        <div className="container">
+          <div className="img-delete-edit">
             <img
               src={product.Image}
               alt={product.NameProduct}
-              style={{ maxWidth: "100%", height: "auto" }}
             />
+            {isLoggedIn && user.Role === "Admin" && (
+            <div className="container-link">
+              <Link
+                to={`/product/edit/${productId}`}
+                className="link edit-button"
+              >
+                Modifica
+              </Link>
+              <Link to={`/product/delete/${productId}`}
+              className="link delete-button">Elimina</Link>
+            </div>
+          )}
+          </div>
+          <div className="info-container">
+          <h2 className="h2-productDetails">{product.NameProduct}</h2>
             <p>
               <strong>Descrizione:</strong> {product.Description}
             </p>
             <p>
-              <strong>Prezzo:</strong> €{product.Price}
+              {" "}
+              <strong>Prezzo:</strong>
+              {product.Price.toLocaleString("it-IT", {
+                style: "currency",
+                currency: "EUR",
+              })}
             </p>
             <p>
-              <strong>Disponibilità:</strong>
+              <strong>Disponibilità:</strong>{" "}
               {product.Availability ? "Disponibile" : "Non Disponibile"}
             </p>
-
             <p>
               <strong>Categoria:</strong> {product.Category}
             </p>
-            {isLoggedIn && user.Role === "Admin" && (
-              <div>
-                <Link
-                  to={`/product/edit/${productId}`}
-                  style={{ marginRight: 10 }}
-                >
-                  Modifica
-                </Link>
-                <Link to={`/product/delete/${productId}`}>Elimina</Link>
-              </div>
-            )}
-            {isLoggedIn && (
-              <>
-                <button onClick={() => addToCart(productId)}>
-                  Aggiungi al Carrello
-                </button>
-                <button onClick={() => addToFavorites(product.ProductId)}>
-                  Aggiungi ai Preferiti
-                </button>
-                <button onClick={() => navigate(-1)}>Torna Indietro</button>
-              </>
-            )}
+
+            <div className="container-btn-details">
+              {isLoggedIn && (
+                <>
+                  <button
+                    className="btn-details"
+                    onClick={() => addToCart(productId)}
+                  >
+                    Aggiungi al Carrello
+                  </button>
+                  <button
+                    className="btn-details"
+                    onClick={() => addToFavorites(product.ProductId)}
+                  >
+                    Aggiungi ai Preferiti
+                  </button>
+                </>
+              )}
+            </div>
           </div>
         </div>
       ) : (

@@ -38,13 +38,15 @@ function ProductsPage() {
 
   return (
     <div>
-      <h2>Prodotti per {nameProduct}</h2>
-      <div>
-        <button onClick={() => handleChangeCategory("Manga")}>Manga</button>
-        <button onClick={() => handleChangeCategory("Action Figure")}>
+      <div className="container-title">
+        <h2 className="h2-productpage">{nameProduct}</h2>
+      </div>
+      <div className="container-category">
+        <button className="button-category" onClick={() => handleChangeCategory("Manga")}>Manga</button>
+        <button className="button-category" onClick={() => handleChangeCategory("Action Figure")}>
           Action Figure
         </button>
-        <button onClick={() => handleChangeCategory("Funko Pop")}>
+        <button className="button-category" onClick={() => handleChangeCategory("Funko Pop")}>
           Funko Pop
         </button>
       </div>
@@ -64,7 +66,7 @@ function ProductsPage() {
                   currency: "EUR",
                 })}
               </p>
-              <p>{product.Availability ? 'Disponibile' : 'Non Disponibile'}</p>
+              <p>{product.Availability ? "Disponibile" : "Non Disponibile"}</p>
             </div>
           </Link>
         ))}
