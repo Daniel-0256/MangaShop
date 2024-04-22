@@ -1,5 +1,5 @@
 
-.edit-container {
+.container-editProduct {
     max-width: 600px;
     margin: 20px auto 20px auto;
     padding: 20px;
@@ -25,10 +25,9 @@
     font-weight: bold;
   }
   
-  input[type="text"],
-  input[type="number"],
-  textarea,
-  select {
+  .input-editProduct,
+  .textarea-editProduct
+  {
     padding: 8px;
     font-size: 16px;
     border: 2px solid #ccc;
@@ -36,12 +35,12 @@
     margin-top: 5px;
   }
   
-  textarea {
+  .textarea-editProduct {
     height: 100px;
     resize: vertical;
   }
   
-  input[type="checkbox"] {
+  .checkbox-editProduct {
     margin-top: 5px;
   }
   

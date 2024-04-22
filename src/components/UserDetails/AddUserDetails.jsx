@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import useAuth from "../Hooks/UseAuth";
+import "./AddUserDetails.css";
 
 const AddUserDetails = () => {
   const { user } = useAuth();
@@ -56,25 +57,27 @@ const AddUserDetails = () => {
   };
 
   return (
-    <div>
-      <h1>Aggiungi Dettagli Utente</h1>
+    <div className="form-container-addUserDetails">
+      <h1 className="form-title-addUserDetails">Aggiungi Dettagli Utente</h1>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className="label-addUserDetails">
           Indirizzo:
           <input
             type="text"
             name="Address"
+            className="input-addUserDetails"
             value={details.Address}
             onChange={handleChange}
             required
             placeholder="Inserisci il tuo indirizzo completo"
           />
         </label>
-        <label>
+        <label className="label-addUserDetails">
           CAP:
           <input
             type="text"
             name="ZipCode"
+            className="input-addUserDetails"
             value={details.ZipCode}
             onChange={handleChange}
             required
@@ -83,33 +86,36 @@ const AddUserDetails = () => {
             placeholder="12345"
           />
         </label>
-        <label>
+        <label className="label-addUserDetails">
           Città:
           <input
             type="text"
             name="City"
+            className="input-addUserDetails"
             value={details.City}
             onChange={handleChange}
             required
             placeholder="Città"
           />
         </label>
-        <label>
+        <label className="label-addUserDetails">
           Provincia:
           <input
             type="text"
             name="Province"
+            className="input-addUserDetails"
             value={details.Province}
             onChange={handleChange}
             required
             placeholder="Provincia"
           />
         </label>
-        <label>
+        <label className="label-addUserDetails">
           Numero di Carta:
           <input
             type="number"
             name="CardNumber"
+            className="input-addUserDetails"
             value={details.CardNumber}
             onChange={handleChange}
             required
@@ -118,22 +124,24 @@ const AddUserDetails = () => {
             placeholder="1234 5678 9012 3456"
           />
         </label>
-        <label>
+        <label className="label-addUserDetails">
           Scadenza Carta:
           <input
             type="date"
             name="CardExpiryDate"
+            className="input-addUserDetails"
             value={details.CardExpiryDate}
             onChange={handleChange}
             required
             placeholder="MM/AAAA"
           />
         </label>
-        <label>
+        <label className="label-addUserDetails">
           CVV:
           <input
             type="text"
             name="CardCVV"
+            className="input-addUserDetails"
             value={details.CardCVV}
             onChange={handleChange}
             required
@@ -142,10 +150,11 @@ const AddUserDetails = () => {
             placeholder="123"
           />
         </label>
-        <button type="submit">Aggiungi Dettagli</button>
+        <button type="submit" className="submit-button-addUserDetails">Aggiungi Dettagli</button>
+        <button className="btn-indietroUserDetails" onClick={() => navigate(-1)}>Torna Indietro</button>
       </form>
     </div>
-  );
+  );  
 };
 
 export default AddUserDetails;

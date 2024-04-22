@@ -1,0 +1,64 @@
+.form-container-addUserDetails {
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fac05e;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-title-addUserDetails {
+    text-align: center;
+    color: #3c3c3c;
+    margin-bottom: 20px;
+  }
+  
+  .label-addUserDetails {
+    display: block;
+    margin-bottom: 10px;
+    color: #3c3c3c;
+  }
+  
+  .input-addUserDetails {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #3c3c3c;
+    border-radius: 4px;
+    margin-top: 5px;
+  }
+  
+  .submit-button-addUserDetails {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    color: #3c3c3c;
+    background-color: #7ebdc2;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .submit-button-addUserDetails:hover {
+    background-color: #5cb3b9;
+  }
+
+  .btn-indietroUserDetails {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    color: #3c3c3c;
+    background-color: #c8cdce;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  .btn-indietroUserDetails:hover {
+    background-color: #a9adad;
+  }
+  

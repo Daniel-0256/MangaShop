@@ -1,9 +1,9 @@
-/* Stile base per il contenitore dei preferiti */
+
 .favorites-container {
     width: 60%;
     margin: 20px auto;
     padding: 20px;
-    background: #f9f9f9;
+    background: #c1839f;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     display: flex;
@@ -13,24 +13,25 @@
   
   .favorites-title {
     text-align: center;
-    color: #333;
+    color: #3c3c3c;
     width: 100%;
     margin-bottom: 20px;
   }
   
-  /* Flex container per le card */
+
   .favorites-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around; /* Gestisce lo spaziamento tra le card */
-    gap: 20px; /* Distanza tra le card */
+    justify-content: space-around;
+    gap: 20px;
   }
   
   .favorite-item {
     width: 250px;
+    background-color: white;
     border: 1px solid #ddd;
     border-radius: 8px;
-    overflow: hidden; /* Per mantenere tutto il contenuto dentro i bordi arrotondati */
+    overflow: hidden;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     padding: 15px;
     display: flex;
@@ -45,28 +46,24 @@
   }
   
   .favorite-name {
+    text-align: center;
     font-size: 18px;
-    color: #444;
+    color: #3c3c3c;
     margin: 10px 0;
   }
   
   .action-button {
     padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
+    background-color: #7ebdc2;
+    color: #3c3c3c;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: auto; /* Spinge il bottone verso il basso */
+    margin-top: auto;
   }
-  
-  .back-button {
-    padding: 10px 20px;
-    background-color: #6c757d;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 20px;
+
+  .action-button:hover {
+    background-color: #60bac0;
   }
   
   @media (max-width: 480px) {

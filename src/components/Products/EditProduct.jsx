@@ -54,7 +54,7 @@ const EditProduct = () => {
   };
 
   return (
-    <div className="edit-container">
+    <div className="container-editProduct">
       <h1 className="h1-editProduct">Modifica Prodotto</h1>
       <form className="form-editProduct" onSubmit={handleSubmit}>
         <label className="label-editProduct">
@@ -62,6 +62,7 @@ const EditProduct = () => {
           <input
             type="text"
             name="NameProduct"
+            className="input-editProduct"
             value={product.NameProduct}
             onChange={handleInputChange}
           />
@@ -71,6 +72,7 @@ const EditProduct = () => {
           <input
             type="text"
             name="Image"
+            className="input-editProduct"
             value={product.Image}
             onChange={handleInputChange}
           />
@@ -79,6 +81,7 @@ const EditProduct = () => {
           Descrizione:
           <textarea
             name="Description"
+            className="textarea-editProduct"
             value={product.Description}
             onChange={handleInputChange}
           />
@@ -88,6 +91,7 @@ const EditProduct = () => {
           <input
             type="number"
             name="Price"
+            className="input-editProduct"
             value={product.Price}
             onChange={handleInputChange}
           />
@@ -97,6 +101,7 @@ const EditProduct = () => {
           <input
             type="checkbox"
             name="Availability"
+            className="checkbox-editProduct"
             checked={product.Availability}
             onChange={handleInputChange}
           />
@@ -105,6 +110,7 @@ const EditProduct = () => {
           Categoria:
           <select
             name="Category"
+            className="input-editProduct"
             value={product.Category}
             onChange={handleInputChange}
           >

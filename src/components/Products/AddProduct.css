@@ -1,5 +1,5 @@
 
-.add-container {
+.container-addProduct {
     max-width: 600px;
     margin: 20px auto 20px auto;
     padding: 20px;
@@ -25,10 +25,9 @@
     font-weight: bold;
   }
   
-  input[type="text"],
-  input[type="number"],
-  textarea,
-  select {
+  .input-addProduct,
+  .textarea-addProduct
+  {
     width: 100%;
     padding: 8px;
     font-size: 16px;
@@ -37,12 +36,12 @@
     margin-top: 5px;
   }
   
-  textarea {
+  .textarea-addProduct {
     height: 100px;
     resize: vertical;
   }
   
-  input[type="checkbox"] {
+  .checkbox-addProduct {
     margin-top: 5px;
   }
   

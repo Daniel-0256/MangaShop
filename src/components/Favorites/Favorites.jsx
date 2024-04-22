@@ -58,38 +58,36 @@ const Favorites = () => {
       {favorites.length > 0 ? (
         <div className="favorites-grid">
           {favorites.map((fav) => (
-            <Link
-              to={`/product/details/${fav.Products.ProductId}`}
-              key={fav.Products.ProductId}
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <div key={fav.FavoriteId} className="favorite-item">
+            <div key={fav.FavoriteId} className="favorite-item">
+              <Link
+                to={`/product/details/${fav.Products.ProductId}`}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
                 <img
                   className="favorite-image"
                   src={fav.Products.Image}
                   alt={fav.Products.NameProduct}
                 />
                 <h2 className="favorite-name">{fav.Products.NameProduct}</h2>
-                <button
-                  className="action-button"
-                  onClick={() => removeFromFavorites(fav.FavoriteId)}
-                >
-                  Rimuovi dai Preferiti
-                </button>
-              </div>
-            </Link>
+              </Link>
+              <button
+                className="action-button"
+                onClick={() => removeFromFavorites(fav.FavoriteId)}
+              >
+                Rimuovi dai Preferiti
+              </button>
+            </div>
           ))}
         </div>
       ) : (
         <>
           <p>Non hai prodotti nei preferiti.</p>
-          <button className="back-button" onClick={() => navigate(-1)}>
-            Torna Indietro
-          </button>
         </>
       )}
     </div>
   );
+  
+
 };
 
 export default Favorites;

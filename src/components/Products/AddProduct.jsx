@@ -60,7 +60,7 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="add-container">
+    <div className="container-addProduct">
       <h1 className="h1-addproduct">Aggiungi Prodotto</h1>
       <form className="form-addproduct" onSubmit={handleSubmit}>
         <div>
@@ -68,6 +68,7 @@ const AddProduct = () => {
           <input
             type="text"
             name="nameProduct"
+            className="input-addProduct"
             value={product.nameProduct}
             onChange={handleChange}
             required
@@ -78,6 +79,7 @@ const AddProduct = () => {
           <input
             type="text"
             name="image"
+            className="input-addProduct"
             value={product.image}
             onChange={handleChange}
             required
@@ -87,6 +89,7 @@ const AddProduct = () => {
           <label className="label-addproduct">Descrizione:</label>
           <textarea
             name="description"
+            className="textarea-addProduct"
             value={product.description}
             onChange={handleChange}
             required
@@ -97,6 +100,7 @@ const AddProduct = () => {
           <input
             type="number"
             name="price"
+            className="input-addProduct"
             value={product.price}
             onChange={handleChange}
             required
@@ -107,6 +111,7 @@ const AddProduct = () => {
           <input
             type="checkbox"
             name="availability"
+            className="checkbox-addProduct"
             checked={product.availability}
             onChange={handleChange}
           />
@@ -115,6 +120,7 @@ const AddProduct = () => {
           <label className="label-addproduct">Categoria:</label>
           <select
             name="category"
+            className="input-addProduct"
             value={product.category}
             onChange={handleChange}
             required

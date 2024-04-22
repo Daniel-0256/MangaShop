@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import "./SearchPage.css";
 
 const SearchPage = () => {
     const [searchResults, setSearchResults] = useState([]);
@@ -42,46 +43,48 @@ const SearchPage = () => {
     };
   
     return (
-      <div>
-        <h1>Search Results</h1>
-        <form onSubmit={handleSearchSubmit}>
+      <div className="search-container">
+        <h1 className="search-title">Search Results</h1>
+        <form onSubmit={handleSearchSubmit} className="search-form">
           <input
             type="text"
+            className="input-search"
             value={input}
             onChange={handleInputChange}
             placeholder="Search products or categories..."
           />
-          <button type="submit">Search</button>
+          <button type="submit" className="search-button">Cerca</button>
         </form>
         {loading ? (
           <p>Loading...</p>
         ) : error ? (
           <p>{error}</p>
         ) : (
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+          <div className="results-container">
             {searchResults.length > 0 ? (
               searchResults.map(product => (
                 <Link to={`/product/details/${product.ProductId}`} key={product.ProductId} style={{ textDecoration: 'none', color: 'inherit' }}>
-                  <div style={{ margin: "20px", padding: "10px"}}>
-                    <img src={product.Image} alt={product.NameProduct} />
-                    <h5>{product.NameProduct}</h5>
-                    <p>
+                  <div className="product-card">
+                    <img src={product.Image} alt={product.NameProduct} className="product-image" />
+                    <h5 className="product-name">{product.NameProduct}</h5>
+                    <p className="product-price">
                       {product.Price.toLocaleString("it-IT", {
                         style: "currency",
                         currency: "EUR",
                       })}
                     </p>
-                    <p>{product.Availability ? 'Available' : 'Not Available'}</p>
+                    <p>{product.Availability ? 'Disponibile' : 'Non disponibile'}</p>
                   </div>
                 </Link>
               ))
             ) : (
-              <p>No results found.</p>
+              <p className="no-results">No results found.</p>
             )}
           </div>
         )}
       </div>
     );
+    
 };
 
 export default SearchPage;

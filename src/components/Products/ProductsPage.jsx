@@ -38,7 +38,7 @@ function ProductsPage() {
 
   return (
     <div>
-      <div className="container-title">
+      <div className="container-titleProduct">
         <h2 className="h2-productpage">{nameProduct}</h2>
       </div>
       <div className="container-category">
