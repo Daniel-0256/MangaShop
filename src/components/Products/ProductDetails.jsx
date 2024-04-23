@@ -95,14 +95,14 @@ const ProductDetails = () => {
   return (
     <div>
       {product ? (
-        <div className="container">
+        <div className="container-ProductDetails">
           <div className="img-delete-edit">
             <img
               src={product.Image}
               alt={product.NameProduct}
             />
             {isLoggedIn && user.Role === "Admin" && (
-            <div className="container-link">
+            <div className="container-link-ProductDetails">
               <Link
                 to={`/product/edit/${productId}`}
                 className="link edit-button"
@@ -114,7 +114,7 @@ const ProductDetails = () => {
             </div>
           )}
           </div>
-          <div className="info-container">
+          <div className="info-container-ProductDetails">
           <h2 className="h2-productDetails">{product.NameProduct}</h2>
             <p>
               <strong>Descrizione:</strong> {product.Description}
@@ -135,17 +135,17 @@ const ProductDetails = () => {
               <strong>Categoria:</strong> {product.Category}
             </p>
 
-            <div className="container-btn-details">
+            <div className="container-btn-ProductDetails">
               {isLoggedIn && (
                 <>
                   <button
-                    className="btn-details"
+                    className="btn-ProductDetails"
                     onClick={() => addToCart(productId)}
                   >
                     Aggiungi al Carrello
                   </button>
                   <button
-                    className="btn-details"
+                    className="btn-ProductDetails"
                     onClick={() => addToFavorites(product.ProductId)}
                   >
                     Aggiungi ai Preferiti
