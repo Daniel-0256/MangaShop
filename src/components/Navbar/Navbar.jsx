@@ -79,10 +79,10 @@ const Navbar = () => {
                 ) : (
                   <>
                     <Dropdown.Item as={Link} to="/login">
-                      Login
+                      Accedi
                     </Dropdown.Item>
                     <Dropdown.Item as={Link} to="/register">
-                      Register
+                      Registrati
                     </Dropdown.Item>
                   </>
                 )}
